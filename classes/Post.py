@@ -8,9 +8,23 @@ class Post:
     """
     A class used to represent post on Nitzagram
     """
-    def __init__(self): #TODO: add parameters
-        #TODO: write me!
-        pass
+    def __init__(self, descprition ,user_name,location): #TODO: add parameters
+        self.descprition = descprition
+        self.user_name = user_name
+        self.location = location
+        self.comments = []
+        self.like_counter = 0
+        self.comments_display_index = 0
+
+    def add_like(self):
+        self.like_counter+=1
+
+    def add_comment(self,text):
+
+        self.comments.append(text)
+
+
+
 
     def display(self):
         """
@@ -20,10 +34,23 @@ class Post:
         :return: None
         """
         # TODO: write me!
-        pass
+        font =pygame.font.SysFont('chalkduster.ttf',UI_FONT_SIZE )
+
+        username= font.render(self.user_name,True,BLACK)
+        screen.blit(username,(LOCATION_TEXT_X_POS,LOCATION_TEXT_Y_POS))
+
+        location = font.render(self.location,True,BLACK)
+        screen.blit(location,(DESCRIPTION_TEXT_X_POS,DESCRIPTION_TEXT_Y_POS))
+
+        like_count = font.render(str(self.like_counter),True,BLACK)
+        screen.blit(like_count,(LIKE_TEXT_X_POS,LIKE_TEXT_Y_POS))
+
+        describtion = font.render(self.descprition, True, BLACK)
+        screen.blit(describtion, (USER_NAME_X_POS, USER_NAME_Y_POS))
 
 
-    def display_comments(self):
+
+    def display_comments(self,comments):
         """
         Display comments on post. In case there are more than 4
         comments, show only 4 comments chosen by reset_comments_display_index
@@ -48,6 +75,3 @@ class Post:
             position_index += 1
             if i >= NUM_OF_COMMENTS_TO_DISPLAY - 1:
                 break
-
-
-
