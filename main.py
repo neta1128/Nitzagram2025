@@ -3,12 +3,9 @@ from helpers import *
 from constants import *
 from buttons import *
 from classes.Post import Post
-from classes.post_image import Imagepost
-from classes.text_post import Text_post
+from classes.ImagesPost import ImagePost
+from classes.TextPost import TextPost
 from classes.Comments import *
-from classes.video_post import VideoPost
-import cv2
-
 
 def main():
     pygame.init()
@@ -18,13 +15,13 @@ def main():
     background = pygame.image.load('Images/background.png')
     background = pygame.transform.scale(background, (WINDOW_WIDTH, WINDOW_HEIGHT))
 
-    post1 = Imagepost("NoaK", "Israel", "hello im noa ", "Images/noa_kirel.jpg")
-    post2 = Imagepost("Crisiano", "Portugal", "Im the best football player", "Images/ronaldo.jpg")
+    post1 = ImagePost("NoaK", "Israel", "hello im noa ", "Images/noa_kirel.jpg")
+    post2 = ImagePost("Crisiano", "Portugal", "Im the best football player", "Images/ronaldo.jpg")
 
     # Variable to keep track of the current post index
     current_post_index = 0
 
-    posts = [post1, post2, post3, post4, post5, post6, post7]
+    posts = [post1, post2]
     f = pygame.font.SysFont("Tahoma", 11)
     text = f.render("IF YOU DONT WANT WATCH THIS VIDEO PRESS 'S'", True, BLACK)
     running = True
